@@ -2,7 +2,8 @@ const apiKeys = "RaRJD8i19Ry0KWt8vSOAJtLN9GuhepyDYIVeZs3E89Q";
 const formE1 = document.querySelector("form");
 const searchResults = document.querySelector(".search-results");
 const searchBar = document.querySelector(".search-bar");
-const buttonTwo = document.querySelector(".button-2");
+// const buttonTwo = document.querySelector(".button-2");
+const nextButton = document.querySelector('.next-button')
 let inputData = "";
 let page = 1;
 
@@ -36,7 +37,7 @@ getImages = (data) => {
     imageWrapper.appendChild(imageLink);
     searchResults.appendChild(imageWrapper);
   });
-  buttonTwo.style.display = "block";
+  nextButton.style.display = "block";
 };
 async function fetchResults() {
   try {
@@ -51,10 +52,16 @@ async function fetchResults() {
 formE1.addEventListener("submit", (event) => {
   event.preventDefault();
   page = 1;
-  fetchResults()
+  fetchResults();
 });
 
-buttonTwo.addEventListener("click", () => {
-  page++;
-  fetchResults()
+// buttonTwo.addEventListener("click", () => {
+//   page++;
+//   fetchResults()
+// });
+
+nextButton.addEventListener("click", ()=>{
+page += 1;
+fetchResults();
 });
+
